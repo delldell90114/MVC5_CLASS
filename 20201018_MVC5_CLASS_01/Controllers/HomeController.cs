@@ -25,8 +25,7 @@ namespace _20201018_MVC5_CLASS_01.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-        
+        }        
         public ActionResult Test()
         {
             ViewBag.Message = "This is test page.";
