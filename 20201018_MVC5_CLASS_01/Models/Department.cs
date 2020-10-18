@@ -12,29 +12,23 @@ namespace _20201018_MVC5_CLASS_01.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Person()
+        public Department()
         {
-            this.Department = new HashSet<Department>();
-            this.Enrollment = new HashSet<Enrollment>();
             this.Course = new HashSet<Course>();
         }
     
-        public int ID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public Nullable<System.DateTime> HireDate { get; set; }
-        public Nullable<System.DateTime> EnrollmentDate { get; set; }
-        public string Discriminator { get; set; }
+        public int DepartmentID { get; set; }
+        public string Name { get; set; }
+        public decimal Budget { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public Nullable<int> InstructorID { get; set; }
+        public byte[] RowVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Department> Department { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Enrollment> Enrollment { get; set; }
-        public virtual OfficeAssignment OfficeAssignment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Course { get; set; }
+        public virtual Person Person { get; set; }
     }
 }
