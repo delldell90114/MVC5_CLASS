@@ -31,6 +31,7 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Person person)
         {
             if (ModelState.IsValid)
@@ -48,6 +49,7 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Person person)
         {
             if (ModelState.IsValid)
@@ -78,14 +80,8 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection form)
-        {
-            data.Remove(data.First(p => p.Id == id));
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Delete(int id, int a)
         {
             data.Remove(data.First(p => p.Id == id));
             return RedirectToAction("Index");
