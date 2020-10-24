@@ -11,7 +11,8 @@ namespace _20201018_MVC5_CLASS_01.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,10 @@ namespace _20201018_MVC5_CLASS_01.Models
     
         public int DepartmentID { get; set; }
         public string Name { get; set; }
+        [DisplayFormat(DataFormatString = "{0:0000}")]
         public decimal Budget { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime StartDate { get; set; }
         public Nullable<int> InstructorID { get; set; }
         public byte[] RowVersion { get; set; }
