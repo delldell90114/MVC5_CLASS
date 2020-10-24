@@ -88,11 +88,11 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CourseEditViewModel course)
+        public ActionResult Edit(CourseEditViewModel course)
         {
             if (ModelState.IsValid)
             {
-                var item = db.Course.Find(id);
+                var item = db.Course.Find(course.CourseID);
                 item.InjectFrom(course);
 
                 db.SaveChanges();
