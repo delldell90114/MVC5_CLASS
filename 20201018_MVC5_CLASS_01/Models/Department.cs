@@ -25,8 +25,6 @@ namespace _20201018_MVC5_CLASS_01.Models
         public int DepartmentID { get; set; }
         public string Name { get; set; }
         public decimal Budget { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<int> InstructorID { get; set; }
         public byte[] RowVersion { get; set; }

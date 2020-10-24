@@ -51,7 +51,7 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "CourseID,Title,Credits,DepartmentID")] Course course)
-        public ActionResult Create(CourseCreateViewModel courseView)
+        public ActionResult Create(CourseEditViewModel courseView)
         {
             if (ModelState.IsValid)
             {

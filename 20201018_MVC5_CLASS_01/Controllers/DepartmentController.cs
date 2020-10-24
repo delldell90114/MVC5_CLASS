@@ -23,7 +23,7 @@ namespace _20201018_MVC5_CLASS_01.Models
 
         public ActionResult Create()
         {
-            ViewBag.InstructorID = new SelectList(db.Person, "ID", "FirstName");
+            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName");
             return View();
         }
 
@@ -32,13 +32,16 @@ namespace _20201018_MVC5_CLASS_01.Models
         {
             if(ModelState.IsValid)
             {
+                //var item = db.Department.Create();
+                //item.InjectFrom(data);
+
                 db.Department.Add(data);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            ViewBag.InstructorID = new SelectList(db.Person, "ID", "FirstName");
+            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName");
             return View(data);
         }
         public ActionResult Edit(int? id)
@@ -53,7 +56,7 @@ namespace _20201018_MVC5_CLASS_01.Models
             {
                 return this.HttpNotFound();
             }
-            ViewBag.InstructorID = new SelectList(db.Person, "ID", "FirstName", dept.InstructorID);
+            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName", dept.InstructorID);
             return View(db.Department.Find(id));
         }
 
@@ -84,7 +87,7 @@ namespace _20201018_MVC5_CLASS_01.Models
             {
                 return this.HttpNotFound();
             }
-            ViewBag.InstructorID = new SelectList(db.Person, "ID", "FirstName", dept.InstructorID);
+            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName", dept.InstructorID);
             return View(db.Department.Find(id));
         }
 
@@ -105,7 +108,7 @@ namespace _20201018_MVC5_CLASS_01.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            ViewBag.InstructorID = new SelectList(db.Person, "ID", "FirstName");
+            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName");
             return View(db.Department.Find(id));
         }
 
@@ -122,7 +125,7 @@ namespace _20201018_MVC5_CLASS_01.Models
                 return RedirectToAction("Index");
             }
 
-            ViewBag.InstructorID = new SelectList(db.Person, "ID", "FirstName");
+            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName");
             return View();
         }
     }
