@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebGrease;
 using Omu.ValueInjecter;
+using _20201018_MVC5_CLASS_01.Models;
 using _20201018_MVC5_CLASS_01.ViewModel;
 
 namespace _20201018_MVC5_CLASS_01.Models

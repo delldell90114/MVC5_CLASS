@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Omu.ValueInjecter;
 using _20201018_MVC5_CLASS_01.Models;
+using _20201018_MVC5_CLASS_01.ViewModel;
 
 namespace _20201018_MVC5_CLASS_01.Controllers
 {
@@ -48,17 +50,21 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseID,Title,Credits,DepartmentID")] Course course)
+        //public ActionResult Create([Bind(Include = "CourseID,Title,Credits,DepartmentID")] Course course)
+        public ActionResult Create(CourseCreateViewModel courseView)
         {
             if (ModelState.IsValid)
             {
-                db.Course.Add(course);
+                Course item = new Course();
+                item.InjectFrom(courseView);
+                db.Course.Add(item);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DepartmentID = new SelectList(db.Department, "DepartmentID", "Name", course.DepartmentID);
-            return View(course);
+            ViewBag.DepartmentID = new SelectList(db.Department, "DepartmentID", "Name", courseView.DepartmentID);
+            return View(courseView);
         }
 
         // GET: Course/Edit/5
@@ -82,11 +88,13 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseID,Title,Credits,DepartmentID")] Course course)
+        public ActionResult Edit(int id, CourseEditViewModel course)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(course).State = EntityState.Modified;
+                var item = db.Course.Find(id);
+                item.InjectFrom(course);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
