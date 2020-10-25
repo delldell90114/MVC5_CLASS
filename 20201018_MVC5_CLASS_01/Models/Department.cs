@@ -11,8 +11,7 @@ namespace _20201018_MVC5_CLASS_01.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,17 +19,14 @@ namespace _20201018_MVC5_CLASS_01.Models
         {
             this.Course = new HashSet<Course>();
         }
-
+    
         public int DepartmentID { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
         public decimal Budget { get; set; }
-        [Required]
         public Nullable<System.DateTime> StartDate { get; set; }
-        [Required]
         public Nullable<int> InstructorID { get; set; }
         public byte[] RowVersion { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Course { get; set; }

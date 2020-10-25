@@ -13,17 +13,26 @@ namespace _20201018_MVC5_CLASS_01.Models
 {
     public class DepartmentController : Controller
     {
-        private ContosoUniversityEntities db = new ContosoUniversityEntities();
+        //private ContosoUniversityEntities db = new ContosoUniversityEntities();
+
+        private DepartmentRepository repo;
+        private PersonRepository repoPerson;
+
+        public DepartmentController()
+        {
+            repo = RepositoryHelper.GetDepartmentRepository();
+            repoPerson = RepositoryHelper.GetPersonRepository(repo.UnitOfWork);
+        }
 
         // GET: Department
         public ActionResult Index()
         {
-            return View(db.Department);
+            return View(repo.All());
         }
 
         public ActionResult Create()
         {
-            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName");
+            ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName");
             return View();
         }
 
@@ -35,13 +44,13 @@ namespace _20201018_MVC5_CLASS_01.Models
                 //var item = db.Department.Create();
                 //item.InjectFrom(data);
 
-                db.Department.Add(data);
-                db.SaveChanges();
+                repo.Add(data);
+                repo.UnitOfWork.Commit();
 
                 return RedirectToAction("Index");
             }
 
-            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName");
+            ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName");
             return View(data);
         }
         public ActionResult Edit(int? id)
@@ -51,13 +60,13 @@ namespace _20201018_MVC5_CLASS_01.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var dept = db.Department.Find(id);
+            var dept = repo.GetDepartment(id.Value);
             if(dept == null)
             {
                 return this.HttpNotFound();
             }
-            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName", dept.InstructorID);
-            return View(db.Department.Find(id));
+            ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName", dept.InstructorID);
+            return View(repo.GetDepartment(id.Value));
         }
 
         // ** Use ViewModel can prevent the <Over post> attack **
@@ -67,28 +76,28 @@ namespace _20201018_MVC5_CLASS_01.Models
         {
             if (ModelState.IsValid)
             {
-                var item = db.Department.Find(id);
+                var item = repo.GetDepartment(id);
                 // -> ** Use <ValueInjecter> for binding each field, the name of property must be same will be binded **
                 item.InjectFrom(data);
-                
+
                 // -> ** Following binded can be marked after usiung <ValueInjecter>
                 //item.Name = data.Name;
                 //item.Budget = data.Budget;
                 //item.StartDate = data.StartDate;
                 //item.InstructorID = data.InstructorID;
 
-                db.SaveChanges();
+                repo.UnitOfWork.Commit();
 
                 return RedirectToAction("Index");
             }
 
-            var dept = db.Department.Find(id);
+            var dept = repo.GetDepartment(id);
             if (dept == null)
             {
                 return this.HttpNotFound();
             }
-            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName", dept.InstructorID);
-            return View(db.Department.Find(id));
+            ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName", dept.InstructorID);
+            return View(repo.GetDepartment(id));
         }
 
         public ActionResult Details(int? id)
@@ -98,7 +107,7 @@ namespace _20201018_MVC5_CLASS_01.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            return View(db.Department.Find(id));
+            return View(repo.GetDepartment(id.Value));
         }
 
         public ActionResult Delete(int? id)
@@ -108,8 +117,8 @@ namespace _20201018_MVC5_CLASS_01.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName");
-            return View(db.Department.Find(id));
+            ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName");
+            return View(repo.GetDepartment(id.Value));
         }
 
         [HttpPost]
@@ -117,15 +126,15 @@ namespace _20201018_MVC5_CLASS_01.Models
         {
             if (ModelState.IsValid)
             {
-                var item = db.Department.Find(id);
-                db.Department.Remove(item);
+                var item = repo.GetDepartment(id);
 
-                db.SaveChanges();
+                repo.Delete(item);
+                repo.UnitOfWork.Commit();
 
                 return RedirectToAction("Index");
             }
 
-            ViewBag.InstructorID = new SelectList(db.Person.OrderBy(p => p.ID), "ID", "FirstName");
+            ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName");
             return View();
         }
     }
