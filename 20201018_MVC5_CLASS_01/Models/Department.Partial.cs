@@ -9,19 +9,29 @@ namespace _20201018_MVC5_CLASS_01.Models
     public partial class Department
     {
     }
-    
+
+    public partial class Department : IValidatableObject 
+    {
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (this.Name != "Bunch" && this.Budget > 100)
+            {
+                yield return new ValidationResult("您的預算不足", new string[] { "Budget" });
+            }
+        }
+    }
+
     public partial class DepartmentMetaData
     {
-        [Required]
-        [DisplayName("")]
         public int DepartmentID { get; set; }
         [Required]
         [DisplayName("姓名")]
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
         public string Name { get; set; }
         [Required]
+        [MustEven]
         [DisplayName("預算")]
-        [DisplayFormat(DataFormatString = "{0:0000}")]
+        [DisplayFormat(DataFormatString = "{0:0}")]
         public decimal Budget { get; set; }
         [Required]
         [DisplayName("開始日期")]
