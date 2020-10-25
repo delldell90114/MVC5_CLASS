@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace _20201018_MVC5_CLASS_01.Controllers
 {
-    public class CourseReportController : Controller
+    public class CourseReportController : BaseController
     {
         ContosoUniversityEntities db = new ContosoUniversityEntities();
 

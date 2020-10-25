@@ -12,6 +12,8 @@ namespace _20201018_MVC5_CLASS_01.Models
         }
         public override void Delete(Department entity)
         {
+            // ** 可以跳過驗證 **
+            this.UnitOfWork.Context.Configuration.ValidateOnSaveEnabled = false;
             entity.IsDeleted = true;
         }
         public Department GetDepartment(int id)

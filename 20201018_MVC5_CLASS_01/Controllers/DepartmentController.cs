@@ -8,10 +8,11 @@ using WebGrease;
 using Omu.ValueInjecter;
 using _20201018_MVC5_CLASS_01.Models;
 using _20201018_MVC5_CLASS_01.ViewModel;
+using _20201018_MVC5_CLASS_01.Controllers;
 
 namespace _20201018_MVC5_CLASS_01.Models
 {
-    public class DepartmentController : Controller
+    public class DepartmentController : BaseController
     {
         //private ContosoUniversityEntities db = new ContosoUniversityEntities();
 

@@ -12,7 +12,7 @@ using _20201018_MVC5_CLASS_01.ViewModel;
 
 namespace _20201018_MVC5_CLASS_01.Controllers
 {
-    public class CourseController : Controller
+    public class CourseController : BaseController
     {
         private ContosoUniversityEntities db = new ContosoUniversityEntities();
 
