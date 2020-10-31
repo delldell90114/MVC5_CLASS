@@ -11,7 +11,8 @@ namespace _20201018_MVC5_CLASS_01.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Script.Serialization;
+
     public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,9 +26,11 @@ namespace _20201018_MVC5_CLASS_01.Models
         public decimal Budget { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<int> InstructorID { get; set; }
+        [ScriptIgnore(ApplyToOverrides = true)]
         public byte[] RowVersion { get; set; }
         public bool IsDeleted { get; set; }
-    
+
+        [ScriptIgnore(ApplyToOverrides = true)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Course { get; set; }
         public virtual Person Person { get; set; }

@@ -8,9 +8,8 @@ using WebGrease;
 using Omu.ValueInjecter;
 using _20201018_MVC5_CLASS_01.Models;
 using _20201018_MVC5_CLASS_01.ViewModel;
-using _20201018_MVC5_CLASS_01.Controllers;
 
-namespace _20201018_MVC5_CLASS_01.Models
+namespace _20201018_MVC5_CLASS_01.Controllers
 {
     public class DepartmentController : BaseController
     {

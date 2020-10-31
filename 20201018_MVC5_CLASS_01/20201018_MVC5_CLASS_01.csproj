@@ -144,6 +144,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActionResultController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseReportController.cs" />
@@ -251,6 +252,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\IMG_0151.JPG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -321,6 +323,7 @@
     <Content Include="Views\Department\Delete.cshtml" />
     <Content Include="Views\CourseReport\CourseReportMethod1.cshtml" />
     <Content Include="Views\CourseReport\CourseReportMethod4.cshtml" />
+    <Content Include="Views\ActionResult\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
