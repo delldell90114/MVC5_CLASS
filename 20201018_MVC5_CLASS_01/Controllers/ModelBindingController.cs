@@ -1,4 +1,5 @@
 ﻿using _20201018_MVC5_CLASS_01.Models;
+using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace _20201018_MVC5_CLASS_01.Controllers
     public class ModelBindingController : Controller
     {
         DepartmentRepository repo;
+        CourseRepository repoCourse;
 
         public ModelBindingController()
         {
             repo = RepositoryHelper.GetDepartmentRepository();
+            repoCourse = RepositoryHelper.GetCourseRepository(repo.UnitOfWork);
         }
 
         // GET: ModelBinding
@@ -29,6 +32,35 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         public ActionResult ReadTempData()
         {
             return View();
+        }
+
+        //[PrepareDepartmentListForDropDownList]
+        public ActionResult BatchUpdate(bool IsEditMode = false)
+        {
+            ViewData.Model = repoCourse.All();
+            ViewBag.IsEditMode = IsEditMode;
+            ViewBag.DepartmentList = repo.All().Select(p => new { p.DepartmentID, p.Name }).ToList();
+            return View();
+        }
+
+        //[PrepareDepartmentListForDropDownList]
+        [HttpPost]
+        public ActionResult BatchUpdate(List<CourseViewModel> data, bool IsEditMode = false)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach (var item in data)
+                {
+                    var rec = repoCourse.All().FirstOrDefault(p => p.CourseID == item.CourseID);
+                    rec.InjectFrom(item);
+                }
+                repoCourse.UnitOfWork.Commit();
+                TempData["EditResult"] = "批次更新成功";
+
+                return RedirectToAction("BatchUpdate");
+            }
+            ViewBag.DepartmentList = repo.All().Select(p => new { p.DepartmentID, p.Name }).ToList();
+            return View(repoCourse.All());
         }
     }
 }

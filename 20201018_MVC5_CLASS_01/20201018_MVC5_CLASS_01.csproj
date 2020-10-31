@@ -150,6 +150,7 @@
     <Compile Include="Controllers\CourseReportController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModelBindingController.cs" />
+    <Compile Include="Controllers\PrepareDepartmentListForDropDownListAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -327,6 +328,7 @@
     <Content Include="Views\ActionResult\Index.cshtml" />
     <Content Include="Views\ModelBinding\Index.cshtml" />
     <Content Include="Views\ModelBinding\ReadTempData.cshtml" />
+    <Content Include="Views\ModelBinding\BatchUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
