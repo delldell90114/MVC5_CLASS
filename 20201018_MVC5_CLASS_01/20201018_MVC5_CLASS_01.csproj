@@ -149,6 +149,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseReportController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModelBindingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -324,6 +325,8 @@
     <Content Include="Views\CourseReport\CourseReportMethod1.cshtml" />
     <Content Include="Views\CourseReport\CourseReportMethod4.cshtml" />
     <Content Include="Views\ActionResult\Index.cshtml" />
+    <Content Include="Views\ModelBinding\Index.cshtml" />
+    <Content Include="Views\ModelBinding\ReadTempData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,31 @@
+﻿@model _20201018_MVC5_CLASS_01.Models.Department 
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ul>
+    <li>
+        Department ID = @Model.DepartmentID
+    </li>
+</ul>
+
+<ul>
+    <li>
+        ViewData["Key1"] = @ViewData["Key1"]
+    </li>
+</ul>
+
+<ul>
+    <li>
+       ViewBag.Key2 = @ViewBag.Key2
+    </li>
+</ul>
+
+<ul>
+    <li>
+        @Html.ActionLink("Check Temp Data:[\"Message\"]", "ReadTempData")
+    </li>
+</ul>

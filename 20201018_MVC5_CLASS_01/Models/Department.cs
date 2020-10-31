@@ -9,6 +9,7 @@
 
 namespace _20201018_MVC5_CLASS_01.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Web.Script.Serialization;
@@ -34,5 +35,15 @@ namespace _20201018_MVC5_CLASS_01.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Course { get; set; }
         public virtual Person Person { get; set; }
+    }
+
+    public class DepartmentJson
+    {        
+        public int DepartmentID { get; set; }
+        public string Name { get; set; }
+        public decimal Budget { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<int> InstructorID { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
