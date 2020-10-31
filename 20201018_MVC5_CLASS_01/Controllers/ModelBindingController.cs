@@ -62,5 +62,13 @@ namespace _20201018_MVC5_CLASS_01.Controllers
             ViewBag.DepartmentList = repo.All().Select(p => new { p.DepartmentID, p.Name }).ToList();
             return View(repoCourse.All());
         }
+
+#if !DEBUG
+        [NonAction]
+#endif
+        public ActionResult Debug()
+        {
+            return Content("DEBUG");
+        }
     }
 }
