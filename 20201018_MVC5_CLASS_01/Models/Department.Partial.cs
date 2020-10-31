@@ -16,6 +16,9 @@ namespace _20201018_MVC5_CLASS_01.Models
         {
             if (this.Name != "Bunch" && this.Budget > 100)
             {
+                /* For test */
+                throw new ArgumentException("ERROR");
+
                 yield return new ValidationResult("您的預算不足", new string[] { "Budget" });
             }
         }

@@ -329,6 +329,7 @@
     <Content Include="Views\ModelBinding\Index.cshtml" />
     <Content Include="Views\ModelBinding\ReadTempData.cshtml" />
     <Content Include="Views\ModelBinding\BatchUpdate.cshtml" />
+    <Content Include="Views\Shared\ErrorDbEntityValidationException.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

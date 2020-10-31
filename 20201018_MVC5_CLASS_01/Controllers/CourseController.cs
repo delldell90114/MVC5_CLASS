@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Omu.ValueInjecter;
 using _20201018_MVC5_CLASS_01.Models;
 using _20201018_MVC5_CLASS_01.ViewModel;
+using System.Data.Entity.Validation;
 
 namespace _20201018_MVC5_CLASS_01.Controllers
 {
@@ -88,6 +89,7 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HandleError(ExceptionType = typeof(DbEntityValidationException), View = "ErrorDbEntityValidationException")]
         public ActionResult Edit(CourseEditViewModel course)
         {
             if (ModelState.IsValid)
