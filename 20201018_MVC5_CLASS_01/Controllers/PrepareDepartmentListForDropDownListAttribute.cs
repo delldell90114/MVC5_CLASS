@@ -7,11 +7,12 @@ namespace _20201018_MVC5_CLASS_01.Controllers
 {
     public class PrepareDepartmentListForDropDownListAttribute : ActionFilterAttribute
     {
-        DepartmentRepository repo = new DepartmentRepository();
+        DepartmentRepository repo = RepositoryHelper.GetDepartmentRepository();
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             filterContext.Controller.ViewBag.DepartmentList = repo.All().Select(p => new { p.DepartmentID, p.Name }).ToList();
+            base.OnActionExecuting(filterContext);
         }
 
         public override void OnResultExecuted(ResultExecutedContext filterContext)

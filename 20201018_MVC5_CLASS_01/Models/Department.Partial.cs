@@ -25,7 +25,7 @@ namespace _20201018_MVC5_CLASS_01.Models
     {
         public int DepartmentID { get; set; }
         [Required]
-        [DisplayName("姓名")]
+        [DisplayName("部門名稱")]
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
         public string Name { get; set; }
         [Required]

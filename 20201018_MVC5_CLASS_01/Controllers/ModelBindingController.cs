@@ -34,16 +34,16 @@ namespace _20201018_MVC5_CLASS_01.Controllers
             return View();
         }
 
-        //[PrepareDepartmentListForDropDownList]
+        [PrepareDepartmentListForDropDownList]
         public ActionResult BatchUpdate(bool IsEditMode = false)
         {
             ViewData.Model = repoCourse.All();
             ViewBag.IsEditMode = IsEditMode;
-            ViewBag.DepartmentList = repo.All().Select(p => new { p.DepartmentID, p.Name }).ToList();
+            //ViewBag.DepartmentList = repo.All().Select(p => new { p.DepartmentID, p.Name }).ToList();
             return View();
         }
 
-        //[PrepareDepartmentListForDropDownList]
+        [PrepareDepartmentListForDropDownList]
         [HttpPost]
         public ActionResult BatchUpdate(List<CourseViewModel> data, bool IsEditMode = false)
         {
@@ -59,7 +59,8 @@ namespace _20201018_MVC5_CLASS_01.Controllers
 
                 return RedirectToAction("BatchUpdate");
             }
-            ViewBag.DepartmentList = repo.All().Select(p => new { p.DepartmentID, p.Name }).ToList();
+            TempData["EditResult"] = "ModelState State 驗證失敗!";
+            //ViewBag.DepartmentList = repo.All().Select(p => new { p.DepartmentID, p.Name }).ToList();
             return View(repoCourse.All());
         }
 
