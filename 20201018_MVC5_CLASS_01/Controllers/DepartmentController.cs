@@ -17,11 +17,13 @@ namespace _20201018_MVC5_CLASS_01.Controllers
 
         private DepartmentRepository repo;
         private PersonRepository repoPerson;
+        private CourseRepository repoCourse;
 
         public DepartmentController()
         {
             repo = RepositoryHelper.GetDepartmentRepository();
             repoPerson = RepositoryHelper.GetPersonRepository(repo.UnitOfWork);
+            repoCourse = RepositoryHelper.GetCourseRepository(repo.UnitOfWork);
         }
 
         // GET: Department
@@ -136,6 +138,14 @@ namespace _20201018_MVC5_CLASS_01.Controllers
 
             ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName");
             return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult CourseUnderDepartment(int id)
+        {
+            var data = repoCourse.All().Where(p => p.DepartmentID == id);
+
+            return PartialView(data);
         }
     }
 }

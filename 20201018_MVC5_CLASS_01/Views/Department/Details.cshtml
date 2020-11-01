@@ -47,7 +47,37 @@
     </dl>
 </div>
 
-@Html.Partial("CourseUnderDepartment", Model.Course)
+@* ----------------------- [Method 3]: Use <Action> to return <PatialView> -----------------------  *@
+@Html.Action("CourseUnderDepartment", new { Model.DepartmentID })
+
+@* ----------------------- [Method 2]: Use <Partial View> Directly -----------------------
+    @Html.Partial("CourseUnderDepartment", Model.Course) -->
+*@
+
+@* ----------------------- [Method 1]: Show <Course Detial> information directly -----------------------
+        <table class="table">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Credites
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credits)
+                </td>
+            </tr>
+        }
+    </table>
+*@
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentID })
