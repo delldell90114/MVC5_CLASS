@@ -11,16 +11,23 @@
 </h3>
 @foreach (var item in ViewBag.data)
 {
-    @item.ToString();
+    @item
 }
 
 <h3>
     Practice 2：
 </h3>
+Method 1 --
 @foreach (var item in ViewBag.data)
 {
     string newstr = string.Format("{0} ", item);
     @newstr
+}
+<br />
+Method 2 --
+@foreach (var item in ViewBag.data)
+{
+    @(item + " ")
 }
 <br />
 
@@ -30,7 +37,7 @@
 <ul>
     @foreach (var item in ViewBag.data)
     {
-        <li>@item.ToString()</li>
+        <li>@item</li>
     }
 </ul>
 <br />
