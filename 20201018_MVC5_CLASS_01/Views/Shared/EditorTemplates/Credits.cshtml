@@ -1,0 +1,9 @@
+﻿@model int
+
+@for (int i = 1; i <= Model; i++)
+{
+    <label>
+        @Html.RadioButton("", i) @i
+    </label>
+    
+} 

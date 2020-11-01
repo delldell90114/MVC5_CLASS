@@ -18,7 +18,8 @@ namespace _20201018_MVC5_CLASS_01.Models
         public string Title { get; set; }
         [Required]
         [Range(1, 20)]
-        [MustEven]
+        //[MustEven]
+        [UIHint("Credits")]
         public int Credits { get; set; }
         [Required]
         public int DepartmentID { get; set; }
