@@ -46,30 +46,10 @@
 
     </dl>
 </div>
+
+@Html.Partial("CourseUnderDepartment", Model.Course)
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentID }) 
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentID })
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-<table class="table">
-    <tr>
-        <th>
-            Title
-        </th>
-        <th>
-            Credites
-        </th>
-    </tr>
-
-    @foreach (var item in Model.Course)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Credits)
-            </td>
-        </tr>
-    }
-</table>
