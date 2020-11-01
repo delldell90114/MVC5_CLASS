@@ -67,6 +67,8 @@ namespace _20201018_MVC5_CLASS_01.Controllers
             {
                 return this.HttpNotFound();
             }
+
+            /* 透過最後一個參數(e.g. dept.InstructorID, 可以將其項目顯示為"已選取" */
             ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName", dept.InstructorID);
             return View(repo.GetDepartment(id.Value));
         }
@@ -98,6 +100,8 @@ namespace _20201018_MVC5_CLASS_01.Controllers
             {
                 return this.HttpNotFound();
             }
+
+            /* 透過最後一個參數(e.g. dept.InstructorID, 可以將其項目顯示為"已選取" */
             ViewBag.InstructorID = new SelectList(repoPerson.All().OrderBy(p => p.ID), "ID", "FirstName", dept.InstructorID);
             return View(repo.GetDepartment(id));
         }

@@ -26,26 +26,32 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Credits)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Department.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Memo)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
-    </td>
-</tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Memo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+            </td>
+        </tr>
+    }
 </table>
+
+
+@using X.PagedList
+@using X.PagedList.Mvc
+
+@Html.PagedListPager(Model as IPagedList, pgNo => Url.Action("Index", new { pageNo = pgNo}))

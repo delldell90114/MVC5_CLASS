@@ -10,6 +10,7 @@ using Omu.ValueInjecter;
 using _20201018_MVC5_CLASS_01.Models;
 using _20201018_MVC5_CLASS_01.ViewModel;
 using System.Data.Entity.Validation;
+using X.PagedList;
 
 namespace _20201018_MVC5_CLASS_01.Controllers
 {
@@ -18,10 +19,15 @@ namespace _20201018_MVC5_CLASS_01.Controllers
         private ContosoUniversityEntities db = new ContosoUniversityEntities();
 
         // GET: Course
-        public ActionResult Index()
+        public ActionResult Index(int pageNo = 1)
         {
-            var course = db.Course.Include(c => c.Department);
-            return View(course.ToList());
+            /* 練習PageList, 改為具有分頁功能 */
+            //var course = db.Course.Include(c => c.Department);
+            var course = db.Course.Include(c => c.Department).OrderBy(p => p.CourseID).ToPagedList(pageNo, 5);
+
+            /* 練習PageList, 改傳入model */
+            //return View(course.ToList());
+            return View(course);
         }
 
         // GET: Course/Details/5
