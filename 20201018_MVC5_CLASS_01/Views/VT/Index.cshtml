@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<h3>
+    Practice 1：
+</h3>
+@foreach (var item in ViewBag.data)
+{
+    @item.ToString();
+}
+
+<h3>
+    Practice 2：
+</h3>
+@foreach (var item in ViewBag.data)
+{
+    string newstr = string.Format("{0} ", item);
+    @newstr
+}
+<br />
+
+<h3>
+    Practice 3：
+</h3>
+<ul>
+    @foreach (var item in ViewBag.data)
+    {
+        <li>@item.ToString()</li>
+    }
+</ul>
+<br />

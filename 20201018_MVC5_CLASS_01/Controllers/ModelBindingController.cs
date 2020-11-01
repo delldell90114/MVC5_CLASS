@@ -64,6 +64,19 @@ namespace _20201018_MVC5_CLASS_01.Controllers
             return View(repoCourse.All());
         }
 
+        public ActionResult ModelBindingTest1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ModelBindingTest1(ModelBinding modelBinding)
+        {
+            ViewBag.Name = modelBinding.Name;
+            ViewBag.Age = modelBinding.Age;
+            return View();
+        }
+
 #if !DEBUG
         [NonAction]
 #endif

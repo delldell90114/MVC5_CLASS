@@ -151,6 +151,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModelBindingController.cs" />
     <Compile Include="Controllers\PrepareDepartmentListForDropDownListAttribute.cs" />
+    <Compile Include="Controllers\VTController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,6 +221,7 @@
     <Compile Include="Models\IUnitOfWork.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelBinding.cs" />
     <Compile Include="Models\MustEvenAttribute.cs" />
     <Compile Include="Models\OfficeAssignment.cs">
       <DependentUpon>ContosoUniversity.tt</DependentUpon>
@@ -330,6 +332,8 @@
     <Content Include="Views\ModelBinding\ReadTempData.cshtml" />
     <Content Include="Views\ModelBinding\BatchUpdate.cshtml" />
     <Content Include="Views\Shared\ErrorDbEntityValidationException.cshtml" />
+    <Content Include="Views\ModelBinding\ModelBindingTest1.cshtml" />
+    <Content Include="Views\VT\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

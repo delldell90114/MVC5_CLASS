@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "ModelBindingTest1";
+}
+
+<h2>ModelBindingTest1</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        Please Input your name:
+        <input type="text" name="modelBinding.Name" />
+        Please Input your Age:
+        <input type="text" name="modelBinding.Age" />
+    </div>
+    <div>
+        <input type="submit" />
+    </div>
+        
+
+    <pre>
+        Your Name is : @ViewBag.Name
+        Your Age is : @ViewBag.Age
+    </pre>
+}
+
